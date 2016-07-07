@@ -5,7 +5,8 @@ export ZSH=/Users/ben/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -83,8 +84,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+DEFAULT_USER="Ben"
+
 export PATH="$(brew --prefix php56)/bin:$PATH"
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
-export EDITOR="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+#export EDITOR="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+prompt_context () { }
