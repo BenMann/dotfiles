@@ -25,6 +25,8 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled=1
 set laststatus=2
 
+" enable mouse clicking
+set mouse=a
 
 " Autoindent when starting new line, or using `o` or `O`.
 set autoindent
@@ -77,11 +79,22 @@ set scrolloff=8
 set sidescroll=1
 set sidescrolloff=15
 
+" Mpa up/down to move 8 lines
+noremap <Up> 8k
+noremap <Down> 8j
+
 " Linenumbers
 set number
 
 " set wordpwrap (off)
 set nowrap
+
+" Tab navigation
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+
+let g:user_emmet_mode='a'    "enable all function in all mode.
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
@@ -92,3 +105,14 @@ let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palett
 set background=dark
 colorscheme hybrid
 syntax on
+
+
+function! Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+      return "\<C-N>"
+    else
+      return "\<Tab>"
+     endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words"

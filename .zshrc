@@ -50,7 +50,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git, sublime)
 
 # User configuration
 
@@ -90,8 +90,21 @@ export PATH="$(brew --prefix php56)/bin:$PATH"
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
-#export EDITOR="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
+export EDITOR="/Applications/Sublime\ Text.app/Contents/MacOS/Sublime\ Text"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias f='open -a Finder'
+
+alias ff='open -a Finder .'
+
+alias o='open'
+
+google() {
+  for term in $@; do
+      search="$search%20$term"
+  done
+  open "http://www.google.com/search?q=$search"
+}
 
 prompt_context () { }
