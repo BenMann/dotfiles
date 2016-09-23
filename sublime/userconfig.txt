@@ -1,0 +1,33 @@
+{
+  "always_show_minimap_viewport": true,
+  "bold_folder_labels": false,
+  "caret_extra_width": 1,
+  "caret_style": "phase",
+  "close_windows_when_empty": false,
+  "color_scheme": "Packages/User/SublimeLinter/Material Spacegray (SL).tmTheme",
+  "copy_with_empty_selection": false,
+  "drag_text": false,
+  "draw_minimap_border": true,
+  "enable_tab_scrolling": false,
+  "font_options":
+  [
+  ],
+  "font_size": 13,
+  "highlight_line": true,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "line_padding_bottom": 3,
+  "line_padding_top": 3,
+  "open_files_in_new_window": false,
+  "overlay_scroll_bars": "enabled",
+  "predawn_sidebar_small": true,
+  "tab_size": 2,
+  "tabs_medium": true,
+  "theme": "Material Spacegray.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_automatic_white_space": true,
+  "trim_trailing_white_space_on_save": true,
+  "word_wrap": false
+}
