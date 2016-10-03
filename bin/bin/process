@@ -1,0 +1,51 @@
+#!/bin/sh
+
+VERSION="1.0.0"
+
+function help {
+cat <<EOF
+  Version $VERSION
+  Usage: process [agrument]
+  Default arguments:
+    - find: searches for a process by name (case insensitive) and returns matching PIDs
+    - kill: kills a process by PID, only if given PID exists
+EOF
+  exit 0
+}
+
+# find PID by given name, case insensitive
+function find {
+  if [[ -z $2 ]]; then
+    echo "Please enter a process name to search for."
+  else
+   ps -ef | grep $2 | grep -v grep | awk '{print $2}'
+  fi
+}
+
+
+# kill found process that was searched by name
+function _kill {
+  if [[ -z $2 ]]; then
+    echo "Please enter a process name you want to kill."
+  else
+   ps -ef | grep $2 | grep -v grep | awk '{print $2}' | xargs kill
+  fi
+}
+
+
+function main {
+  if [ $# == 0 -o "$1" == help ]; then
+    help
+  fi
+
+  if [[ "$1" == "find" ]]; then
+    find "$@"
+  fi
+
+  if [[ "$1" == "kill" ]]; then
+    _kill "$@"
+  fi
+
+}
+
+main "$@"
