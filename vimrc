@@ -1,1 +1,264 @@
-/.vimrc
+" Vim Basics
+" ==========
+set nocompatible
+filetype off
+" set encoding=utf-8
+
+" Enable vim-plug
+" ===============
+call plug#begin('~/.vim/plugged')
+
+" =======
+" Plugins
+Plug 'Chiel92/vim-autoformat'
+Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bruno-/vim-husk'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'epmatsw/ag.vim'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'hashivim/vim-terraform'
+Plug 'honza/vim-snippets'
+Plug 'jayflo/vim-skip'
+Plug 'junegunn/vim-peekaboo'
+Plug 'kelan/gyp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
+Plug 'moll/vim-node'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/syntastic'
+Plug 'sheerun/vim-polyglot'
+Plug 'sjl/gundo.vim'
+Plug 'spwhitt/vim-nix'
+Plug 'tejr/vim-tmux'
+Plug 'ternjs/tern_for_vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tikhomirov/vim-glsl'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'trevordmiller/nova-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+
+" End vim-plug
+" ============
+call plug#end()
+
+" Configuration Files
+" ===================
+set exrc   " Enable use of directory-specific .vimrc
+set secure " Only run autocommands owned by me
+
+" Display Settings
+" ================
+syntax on
+syntax enable
+set t_Co=256
+
+" Disable Background Color Erase (tmux)
+" ====================================
+if &term =~ '256color'
+  set t_ut=
+endif
+
+" General Config
+" ==============
+let mapleader=' '
+set number                    " Line numbers are good
+set cursorline
+set backspace=indent,eol,start  " Allow backspace in insert mode
+set history=1000                " Store lots of :cmdline history
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set gcr=a:blinkon0              " Disable cursor blink
+set autoread                    " Reload files changed outside vim
+set laststatus=2                " Always show status line
+set clipboard=unnamed           " Use system clipboard
+set hidden                      " Buffers can exist in the background
+set splitright                  " Opens vertical split right of current window
+set splitbelow                  " Opens horizontal split below current window
+
+" Mouse
+" ======
+set ttyfast " Send more characters for redraws
+set mouse=a " Enable mouse use in all modes
+
+" Search Settings
+" ===============
+set incsearch        " Find the next match as we type the search
+set hlsearch         " Hilight searches by default
+set viminfo='100,f1  " Save up to 100 marks, enable capital marks
+
+" Turn Off Swap Files
+" ===================
+set noswapfile
+set nobackup
+set nowritebackup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Indentation and Display
+" =======================
+filetype plugin on
+filetype indent on
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set list listchars=tab:\ \ ,trail:·   " Display tabs and trailing spaces visually
+set nowrap                            " Don't wrap lines
+set linebreak                         " Wrap lines at convenient points
+
+" Folds
+" =====
+set foldmethod=indent   " Fold based on indent
+set foldnestmax=3       " Deepest fold is 3 levels
+set nofoldenable        " Don't fold by default
+
+" margin left
+set foldcolumn=0
+
+" Completion
+" ==========
+set wildmode=longest,list,full
+set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~     " Stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+
+" Scrolling
+" =========
+" Start scrolling when we're getting close to margins
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
+
+" Tab navigation
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Fix fmux escape characters
+" =========================
+set timeout
+set timeoutlen=750
+set ttimeoutlen=250
+if has ('nvim')
+  set ttimeout
+  set ttimeoutlen=0
+endif
+
+" Syntastic
+" =========
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Plugin overrides
+source ~/.vim/autocmd.vim
+source ~/.vim/format.vim
+source ~/.vim/common.vim
+source ~/.vim/tmux.vim
+source ~/.vim/ctrlp.vim
+source ~/.vim/snippets.vim
+source ~/.vim/writing.vim
+source ~/.vim/syntastic.vim
+
+" Airline
+" =======
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#branch#enabled=1
+"set laststatus=2
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'eighties'
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_section_b = ''
+let g:airline_section_z = airline#section#create(['%l:%c:%L'])
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+
+" Colorscheme
+" ===========
+set background=dark
+let g:hybrid_use_Xresources=1
+"let g:hybrid_custom_term_colors = 1
+"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+let base16colorspace=256
+colorscheme base16-eighties
+
+
+" Git Gutter
+" ==========
+let g:gitgutter_sign_column_always = 0
+let g:gitgutter_eager = 0
+
+" YCM-UltiSnip-SuperTab:
+" extracted from https://github.com/Valloric/YouCompleteMe/issues/36
+" =====================
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger="<c-Space>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" UltiSnip
+" ========
+"let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsSnippetDirectories=['MyUltiSnips']
+"let g:UltiSnipsListSnippets="<c-l>"
+
+" YCM
+" ===
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+" Searching
+" ==========
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor " Use ag over grep
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""' " Use ag in CtrlP
+  let g:ctrlp_use_caching = 0 " Ag is fast enough that CtrlP doesn't need cache
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+endif
+
+" Startify
+" ========
+let g:startify_list_order = [ [ '  Recent files:' ], 'dir' ]
+
+
+" JavaScript
+set completeopt=longest,menuone
+
+
+" Map up/down to move 8 lines
+"nnoremap <Up> 8k
+"nnoremap <Down> 8j
+"imap <Up>  <Up>
+"imap <Down>  <Down>
