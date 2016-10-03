@@ -24,7 +24,7 @@ function find {
 
 
 # kill found process that was searched by name
-function kill {
+function _kill {
   if [[ -z $2 ]]; then
     echo "Please enter a process name you want to kill."
   else
@@ -43,7 +43,7 @@ function main {
   fi
 
   if [[ "$1" == "kill" ]]; then
-    kill
+    _kill "$@"
   fi
 
 }

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-e /Applications/MAMP/logs/php_error.log
