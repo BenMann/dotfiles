@@ -11,22 +11,16 @@ call plug#begin('~/.vim/plugged')
 " =======
 " Plugins
 Plug 'Chiel92/vim-autoformat'
-Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bruno-/vim-husk'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'epmatsw/ag.vim'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
 Plug 'honza/vim-snippets'
-Plug 'jayflo/vim-skip'
-Plug 'junegunn/vim-peekaboo'
-Plug 'kelan/gyp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
 Plug 'moll/vim-node'
@@ -37,7 +31,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'spwhitt/vim-nix'
 Plug 'tejr/vim-tmux'
-Plug 'ternjs/tern_for_vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-abolish'
@@ -49,7 +42,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'trevordmiller/nova-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -204,8 +196,6 @@ let g:airline#extensions#hunks#enabled = 0
 " ===========
 set background=dark
 let g:hybrid_use_Xresources=1
-"let g:hybrid_custom_term_colors = 1
-"let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 let base16colorspace=256
 colorscheme base16-eighties
 
@@ -226,12 +216,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger="<c-Space>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" UltiSnip
-" ========
-"let g:UltiSnipsEditSplit="vertical"
-"let g:UltiSnipsSnippetDirectories=['MyUltiSnips']
-"let g:UltiSnipsListSnippets="<c-l>"
 
 " YCM
 " ===
